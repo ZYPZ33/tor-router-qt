@@ -2,6 +2,7 @@ from sys import argv, exit
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
+from os import system
 
 
 class MainWindow(QWidget):
@@ -16,17 +17,19 @@ class MainWindow(QWidget):
 
         self.image_label = QLabel(self)
         self.image_label.setGeometry(10, 10, 75, 75)
-        self.image_label.setPixmap(QPixmap("/home/user/.icons/tor-router.svg"))
+        self.image_label.setPixmap(QPixmap("tor-router.svg"))
 
-        self.text_label = QLabel("hi", self)
-        self.text_label.setGeometry(100, 50, 10, 10)
+        self.text_label = QLabel("Tor-Router is disabled", self)
+        self.text_label.setGeometry(85, 50, 150, 20)
         self.text_label.setAlignment(Qt.AlignCenter)
 
-        self.text_label.setStyleSheet("color: green")
+        self.text_label.setStyleSheet("color: red")
 
 
 def on_button_click(self):
+    system("pkexec tor-router")
     current_colour = self.text_label.setStyleSheet()
+    self.text_label.QLabel("Tor-router")
     new_color = "red" if current_colour == "color: green" else "green"
     self.text_label.setStyleSheet(f"color: {new_color}")
 
